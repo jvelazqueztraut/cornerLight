@@ -1,5 +1,7 @@
 {
   "name": "cornerLight",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }
