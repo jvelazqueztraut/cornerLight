@@ -1,0 +1,29 @@
+ion-item .id {
+  float: right;
+  align-items: center;
+  display: flex;
+}
+
+ion-item ion-note {
+  font-size: 15px;
+  margin-right: 8px;
+  font-weight: normal;
+}
+
+ion-icon {
+  margin: auto 5px;
+}
+
+.configs {
+  display: inline-block;
+  width: 50px;
+  align-self: start;
+  margin: auto 5px;
+}
+
+.time {
+  display: inline-block;
+  width: 50px;
+  align-self: end;
+  margin: auto 5px;
+}

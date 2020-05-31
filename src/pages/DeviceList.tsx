@@ -1,6 +1,7 @@
-import MessageListItem from '../components/MessageListItem';
+import DeviceListItem from '../components/DeviceListItem';
 import React, { useState } from 'react';
-import { Message, getMessages } from '../data/messages';
+import { useParams } from 'react-router';
+import { Device, getDevices } from '../data/devices';
 import {
   IonContent,
   IonHeader,
@@ -10,17 +11,21 @@ import {
   IonRefresherContent,
   IonTitle,
   IonToolbar,
+  IonButtons,
+  IonMenuButton,
   useIonViewWillEnter
 } from '@ionic/react';
-import './Home.css';
+import './DeviceList.css';
 
-const Home: React.FC = () => {
+const DeviceList: React.FC = () => {
 
-  const [messages, setMessages] = useState<Message[]>([]);
+  const { name } = useParams<{ name: string; }>();
+
+  const [devices, setDevices] = useState<Device[]>([]);
 
   useIonViewWillEnter(() => {
-    const msgs = getMessages();
-    setMessages(msgs);
+    const dvcs = getDevices();
+    setDevices(dvcs);
   });
 
   const refresh = (e: CustomEvent) => {
@@ -30,10 +35,13 @@ const Home: React.FC = () => {
   };
 
   return (
-    <IonPage id="home-page">
+    <IonPage id="device-list">
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Inbox</IonTitle>
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonTitle>{name}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -44,17 +52,17 @@ const Home: React.FC = () => {
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">
-              Inbox
+              Devices
             </IonTitle>
           </IonToolbar>
         </IonHeader>
 
         <IonList>
-          {messages.map(m => <MessageListItem key={m.id} message={m} />)}
+          {devices.map(d => <DeviceListItem key={d.id} device={d} />)}
         </IonList>
       </IonContent>
     </IonPage>
   );
 };
 
-export default Home;
+export default DeviceList;

@@ -1,0 +1,11 @@
+ion-item .id {
+  float: right;
+  align-items: center;
+  display: flex;
+}
+
+ion-item ion-note {
+  font-size: 15px;
+  margin-right: 8px;
+  font-weight: normal;
+}

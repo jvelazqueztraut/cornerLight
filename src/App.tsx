@@ -1,9 +1,13 @@
 import React from 'react';
+import Menu from './components/Menu';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
-import ViewMessage from './pages/ViewMessage';
+import DeviceList from './pages/DeviceList';
+import DeviceView from './pages/DeviceView';
+import SequenceList from './pages/SequenceList';
+import SequenceView from './pages/SequenceView';
+import ConfigView from './pages/ConfigView';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -27,11 +31,17 @@ import './theme/variables.css';
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route path="/message/:id" component={ViewMessage} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
-      </IonRouterOutlet>
+      <IonSplitPane contentId="main">
+        <Menu />
+        <IonRouterOutlet id="main">
+          <Route path="/devices" component={DeviceList} exact={true} />
+          <Route path="/device/:id" component={DeviceView} exact={true} />
+          <Route path="/sequences" component={SequenceList} exact={true} />
+          <Route path="/sequence/:id" component={SequenceView} exact={true} />
+          <Route path="/sequence/:seqId/:configId" component={ConfigView} exact={true} />
+          <Route exact path="/" render={() => <Redirect to="/devices" />} />
+        </IonRouterOutlet>
+      </IonSplitPane>
     </IonReactRouter>
   </IonApp>
 );

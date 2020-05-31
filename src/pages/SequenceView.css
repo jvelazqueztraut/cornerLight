@@ -1,0 +1,40 @@
+#sequence-view-page ion-item {
+  --inner-padding-end: 0;
+  --background: transparent;
+}
+
+#sequence-view-page ion-label {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+#sequence-view-page ion-item h2 {
+  font-weight: 600;
+}
+
+#sequence-view-page ion-item .id {
+  float: right;
+  align-items: center;
+  display: flex;
+}
+
+#sequence-view-page ion-item ion-icon {
+  font-size: 42px;
+  margin-right: 8px;
+}
+
+#sequence-view-page ion-item ion-note {
+  font-size: 15px;
+  margin-right: 12px;
+  font-weight: normal;
+}
+
+#sequence-view-page h1 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+#sequence-view-page p {
+  line-height: 22px;
+}

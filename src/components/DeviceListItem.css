@@ -1,0 +1,28 @@
+.dot {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  align-self: start;
+  margin: auto 5px;
+}
+
+.dot-online {
+  background: var(--ion-color-success);
+}
+
+.dot-offline {
+  background: var(--ion-color-danger);
+}
+
+ion-item .id {
+  float: right;
+  align-items: center;
+  display: flex;
+}
+
+ion-item ion-note {
+  font-size: 15px;
+  margin-right: 8px;
+  font-weight: normal;
+}
