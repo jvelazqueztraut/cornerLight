@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "com.jvt.cornerLight",
   "appName": "cornerLight",
   "bundledWebRuntime": false,
   "npmClient": "npm",
