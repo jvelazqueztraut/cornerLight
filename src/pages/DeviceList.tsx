@@ -1,4 +1,5 @@
 import DeviceListItem from '../components/DeviceListItem';
+import DeviceSearchModal from '../components/DeviceSearchModal';
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import { Device, getDevices } from '../data/devices';
@@ -13,15 +14,20 @@ import {
   IonToolbar,
   IonButtons,
   IonMenuButton,
-  useIonViewWillEnter
+  useIonViewWillEnter,
+  IonButton,
+  IonIcon
 } from '@ionic/react';
 import './DeviceList.css';
+import { add } from 'ionicons/icons';
 
 const DeviceList: React.FC = () => {
 
   const { name } = useParams<{ name: string; }>();
 
   const [devices, setDevices] = useState<Device[]>([]);
+
+  const [showModal, setShowModal] = useState(false);
 
   useIonViewWillEnter(() => {
     const dvcs = getDevices();
@@ -54,12 +60,20 @@ const DeviceList: React.FC = () => {
             <IonTitle size="large">
               Devices
             </IonTitle>
+            <IonButtons slot="primary">
+              <IonButton fill="solid" color="secondary" onClick={() => setShowModal(true)}>
+                <IonIcon icon={add} />
+              </IonButton>
+            </IonButtons>
           </IonToolbar>
         </IonHeader>
 
         <IonList>
           {devices.map(d => <DeviceListItem key={d.id} device={d} />)}
         </IonList>
+
+        <DeviceSearchModal showModal={showModal} setShowModal={setShowModal}/>
+
       </IonContent>
     </IonPage>
   );
