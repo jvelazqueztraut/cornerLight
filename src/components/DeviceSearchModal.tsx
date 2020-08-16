@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonModal, IonButton, IonToolbar, IonTitle, IonButtons, IonList, IonItem } from '@ionic/react';
 import './DeviceSearchModal.css';
+import { BluetoothLE } from '@ionic-native/bluetooth-le';
 
 interface DeviceSearchModalProps {
     showModal: boolean;
@@ -14,10 +15,24 @@ interface BLEDevice {
 }
 
 const DeviceSearchModal: React.FC<DeviceSearchModalProps> = ({showModal, setShowModal}) => {
-    const devices: BLEDevice[] = [{name:"Device", id:"XXX", rssi:"xx"},{name:"Device", id:"XXX", rssi:"xx"}];
+    const [devices, setDevices] = useState<BLEDevice[]>([]);
 
     const deviceScan = () => {
-
+        console.log(devices)
+        setDevices([])
+        if( !BluetoothLE.isInitialized() ) return;
+        
+        BluetoothLE.startScan({isConnectable: true}).subscribe( status => {
+            console.log(status);
+            if(status.status == 'scanResult')
+                setDevices(devices.concat({name: status.name, id: status.address, rssi: status.rssi.toString()}))
+        });
+        
+        setTimeout(() => {
+            BluetoothLE.stopScan()
+            console.log('Stopping BLE scan')
+            console.log(devices)
+        }, 3000)
     }
 
     return (
