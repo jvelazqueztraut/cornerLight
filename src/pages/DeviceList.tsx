@@ -2,7 +2,7 @@ import DeviceListItem from '../components/DeviceListItem';
 import DeviceSearchModal from '../components/DeviceSearchModal';
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
-import { Device, getDevices } from '../data/devices';
+import { Device, getDevices, addDevice } from '../data/devices';
 import {
   IonContent,
   IonHeader,
@@ -40,6 +40,14 @@ const DeviceList: React.FC = () => {
     }, 3000);
   };
 
+  const newDevice = (address: string, name: string) => {
+    addDevice(address, name);
+    const dvcs = getDevices();
+    setDevices(dvcs);
+    console.log('dvcs',dvcs);
+    console.log('devices',devices);
+  }
+
   return (
     <IonPage id="device-list">
       <IonHeader>
@@ -69,10 +77,10 @@ const DeviceList: React.FC = () => {
         </IonHeader>
 
         <IonList>
-          {devices.map(d => <DeviceListItem key={d.id} device={d} />)}
+          {devices.map(d => <DeviceListItem key={d.address} device={d} />)}
         </IonList>
 
-        <DeviceSearchModal showModal={showModal} setShowModal={setShowModal}/>
+        <DeviceSearchModal showModal={showModal} setShowModal={setShowModal} newDevice={newDevice}/>
 
       </IonContent>
     </IonPage>

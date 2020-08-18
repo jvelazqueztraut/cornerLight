@@ -2,8 +2,8 @@ export interface Device {
   sequenceName: string;
   sequenceId: number;
   online: boolean;
-  ip: string;
   name: string;
+  address: string;
   id: number;
 }
 
@@ -12,19 +12,32 @@ const devices: Device[] = [
     sequenceName: 'Sequence 0',
     sequenceId: 0,
     online: true,
-    ip: '127.0.0.1',
     name: 'Device 0',
+    address: 'XXXX',
     id: 0
   },
   {
     sequenceName: 'Sequence 0',
     sequenceId: 0,
     online: false,
-    ip: '127.0.0.1',
     name: 'Device 1',
+    address: 'YYYY',
     id: 1
   }
 ];
+
+export const addDevice = (address: string, name: string) => {
+  if(devices.find((d => d.address == address)))
+    return;
+  devices.push({
+    sequenceName: 'none',
+    sequenceId: 0,
+    online: true,
+    name: name,
+    address: address,
+    id: devices.length
+  });
+};
 
 export const getDevices = () => devices;
 

@@ -18,7 +18,7 @@ const DeviceListItem: React.FC<DeviceListItemProps> = ({ device }) => {
     <IonItem routerLink={`/device/${device.id}`} detail={false}>
       <IonLabel className="ion-text-wrap">
         <h1>
-          {device.name}
+          {device.name || 'Unnamed'}
           <span className="id">
             <IonNote>{`#${device.id}`}</IonNote>
           </span>

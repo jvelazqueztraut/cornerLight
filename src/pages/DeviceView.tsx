@@ -41,7 +41,7 @@ const DeviceView: React.FC<DeviceProps> = ({ match }) => {
           <IonButtons>
             <IonBackButton defaultHref="/devices"></IonBackButton>
           </IonButtons>
-          <IonTitle>{device ? device.name : ''}</IonTitle>
+          <IonTitle>{device ? device.name : 'Unnamed'}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -58,7 +58,7 @@ const DeviceView: React.FC<DeviceProps> = ({ match }) => {
             </IonItem>
             <IonItem>
               <IonLabel className="ion-text-wrap">
-                {device.ip}
+                {device.address}
               </IonLabel>
             </IonItem>
             <IonItem>
