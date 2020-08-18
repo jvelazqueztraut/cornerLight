@@ -12,7 +12,7 @@
   font-weight: 600;
 }
 
-#device-view-page ion-item .id {
+#device-view-page ion-item .address {
   float: right;
   align-items: center;
   display: flex;

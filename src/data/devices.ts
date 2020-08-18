@@ -4,7 +4,6 @@ export interface Device {
   online: boolean;
   name: string;
   address: string;
-  id: number;
 }
 
 const devices: Device[] = [
@@ -13,16 +12,14 @@ const devices: Device[] = [
     sequenceId: 0,
     online: true,
     name: 'Device 0',
-    address: 'XXXX',
-    id: 0
+    address: 'XXXX'
   },
   {
     sequenceName: 'Sequence 0',
     sequenceId: 0,
     online: false,
     name: 'Device 1',
-    address: 'YYYY',
-    id: 1
+    address: 'YYYY'
   }
 ];
 
@@ -34,11 +31,10 @@ export const addDevice = (address: string, name: string) => {
     sequenceId: 0,
     online: true,
     name: name,
-    address: address,
-    id: devices.length
+    address: address
   });
 };
 
 export const getDevices = () => devices;
 
-export const getDevice = (id: number) => devices.find(d => d.id === id);
+export const getDevice = (address: string) => devices.find(d => d.address === address);

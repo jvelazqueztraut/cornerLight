@@ -15,12 +15,12 @@ interface DeviceListItemProps {
 
 const DeviceListItem: React.FC<DeviceListItemProps> = ({ device }) => {
   return (
-    <IonItem routerLink={`/device/${device.id}`} detail={false}>
+    <IonItem routerLink={`/device/${device.address}`} detail={false}>
       <IonLabel className="ion-text-wrap">
         <h1>
           {device.name || 'Unnamed'}
           <span className="id">
-            <IonNote>{`#${device.id}`}</IonNote>
+            <IonNote>{"#"+device.address.slice(-4)}</IonNote>
           </span>
         </h1>
         <h2>

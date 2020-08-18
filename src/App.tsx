@@ -39,7 +39,7 @@ const App: React.FC = () => {
           <Menu />
           <IonRouterOutlet id="main">
             <Route path="/devices" component={DeviceList} exact={true} />
-            <Route path="/device/:id" component={DeviceView} exact={true} />
+            <Route path="/device/:address" component={DeviceView} exact={true} />
             <Route path="/sequences" component={SequenceList} exact={true} />
             <Route path="/sequence/:id" component={SequenceView} exact={true} />
             <Route path="/sequence/:seqId/:configId" component={ConfigView} exact={true} />

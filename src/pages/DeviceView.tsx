@@ -19,7 +19,7 @@ import {
 import { RouteComponentProps } from 'react-router';
 import './DeviceView.css';
 
-interface DeviceProps extends RouteComponentProps<{ id: string; }> { }
+interface DeviceProps extends RouteComponentProps<{ address: string; }> { }
 
 const DeviceView: React.FC<DeviceProps> = ({ match }) => {
 
@@ -27,7 +27,7 @@ const DeviceView: React.FC<DeviceProps> = ({ match }) => {
   const [sequences, setSequences] = useState<Sequence[]>([]);
 
   useIonViewWillEnter(() => {
-    const d = getDevice(parseInt(match.params.id, 10));
+    const d = getDevice(match.params.address);
     setDevice(d);
 
     const seqs = getSequences();
@@ -51,8 +51,8 @@ const DeviceView: React.FC<DeviceProps> = ({ match }) => {
             <IonItem>
               <IonLabel className="ion-text-wrap">
                 ID
-                <span className="id">
-                  <IonNote>{"#"+device.id}</IonNote>
+                <span className="address">
+                  <IonNote>{"#"+device.address.slice(-4)}</IonNote>
                 </span>
               </IonLabel>
             </IonItem>
